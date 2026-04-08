@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Phone Mockup</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      margin: 0;
+      perspective: 1000px;
+      font-family: Arial, sans-serif;
+    }
+
+    .phone {
+      width: 300px;
+      height: 600px;
+      background: #111;
+      border-radius: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 35px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Sample App UI */
+    .header {
+      background: #4a90e2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .card {
+      background: #f5f5f5;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" id="phone">
+    <div class="screen">
+      <div class="header">Sample App</div>
+      <div class="content">
+        <div class="card">
+          <h3>Welcome</h3>
+          <p>This is a demo UI inside a 3D phone mockup.</p>
+        </div>
+        <div class="card">
+          <h3>Feature</h3>
+          <p>Rotate the phone by moving your mouse.</p>
+        </div>
+        <div class="card">
+          <h3>Enjoy</h3>
+          <p>Smooth animations and depth effect included.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const phone = document.getElementById('phone');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = (window.innerWidth / 2 - e.pageX) / 30;
+      const y = (window.innerHeight / 2 - e.pageY) / 30;
+      phone.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      phone.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  </script>
+</body>
+</html>
